@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -92,6 +93,12 @@ export default function RootLayout({
         <SiteHeader />
         <main className="mx-auto w-full max-w-3xl flex-1 px-6">{children}</main>
         <SiteFooter />
+        {/* Umami 分析（隐私友好，无 Cookie） */}
+        <Script
+          src="https://cloud.umami.is/script.js"
+          data-website-id="24f850ee-ce9d-41e2-9e61-65aa5eaba62c"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
