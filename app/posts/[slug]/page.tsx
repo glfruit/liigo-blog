@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
-import { getAllPosts, getPostBySlug, CATEGORIES } from "@/lib/posts";
+import { getAllPosts, getPostBySlug, getRelatedPosts, CATEGORIES } from "@/lib/posts";
 import SubscribeBox from "@/app/components/SubscribeBox";
 
 export function generateStaticParams() {
@@ -46,6 +46,7 @@ export default async function PostPage({
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) notFound();
+  const related = getRelatedPosts(slug);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -89,6 +90,33 @@ export default async function PostPage({
       <div className="prose-liigo">
         <MDXRemote source={post.content} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
       </div>
+
+      {/* 相关文章 */}
+      {related.length > 0 && (
+        <nav className="mt-14">
+          <p className="font-mono text-xs uppercase tracking-widest text-ink-3">
+            ( 相关 / Related )
+          </p>
+          <ul className="mt-2">
+            {related.map((r) => (
+              <li key={r.slug} className="post-row hairline-b">
+                <Link
+                  href={`/posts/${r.slug}`}
+                  className="group flex items-baseline gap-4 py-4"
+                >
+                  <span className="row-arrow font-mono text-xs">→</span>
+                  <span className="row-title font-display min-w-0 flex-1 truncate text-base font-semibold tracking-tight">
+                    {r.title}
+                  </span>
+                  <time className="shrink-0 font-mono text-xs text-ink-3">
+                    {r.date}
+                  </time>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
 
       {/* Newsletter 订阅 */}
       <SubscribeBox />

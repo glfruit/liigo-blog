@@ -68,3 +68,25 @@ export function getPostBySlug(slug: string): Post | undefined {
 export function getAllCategories(): string[] {
   return Object.keys(CATEGORIES);
 }
+
+/**
+ * 相关文章推荐：同分类 +2 分，每个共享 tag +1 分，
+ * 按得分降序、同分按日期新到旧，取前 limit 篇。
+ */
+export function getRelatedPosts(slug: string, limit = 3): Post[] {
+  const all = getAllPosts();
+  const current = all.find((p) => p.slug === slug);
+  if (!current) return [];
+  return all
+    .filter((p) => p.slug !== slug)
+    .map((p) => ({
+      p,
+      score:
+        (p.category === current.category ? 2 : 0) +
+        p.tags.filter((t) => current.tags.includes(t)).length,
+    }))
+    .filter((s) => s.score > 0)
+    .sort((a, b) => b.score - a.score || (a.p.date < b.p.date ? 1 : -1))
+    .slice(0, limit)
+    .map((s) => s.p);
+}
