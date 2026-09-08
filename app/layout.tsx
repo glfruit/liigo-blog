@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     icon: "/icons/logo.svg",
     apple: "/icons/icon-180.png",
   },
+  verification: {
+    google: "j84h8reQybXDH2OW8PCChx6NvFpIwc8wugnBz-EyFaw",
+  },
 };
 
 function LogoMark({ size = 22 }: { size?: number }) {
