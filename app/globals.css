@@ -32,9 +32,21 @@ body {
 .hairline-b {
   border-bottom: 1px solid var(--color-line);
 }
+.hairline-t {
+  border-top: 1px solid var(--color-line);
+}
+.hairline {
+  border: 1px solid var(--color-line);
+}
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .hairline-b {
     border-bottom-width: 0.5px;
+  }
+  .hairline-t {
+    border-top-width: 0.5px;
+  }
+  .hairline {
+    border-width: 0.5px;
   }
 }
 

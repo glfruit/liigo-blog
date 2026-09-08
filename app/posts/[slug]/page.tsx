@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { getAllPosts, getPostBySlug, CATEGORIES } from "@/lib/posts";
+import SubscribeBox from "@/app/components/SubscribeBox";
 
 export function generateStaticParams() {
   return getAllPosts().map((p) => ({ slug: p.slug }));
@@ -88,6 +89,9 @@ export default async function PostPage({
       <div className="prose-liigo">
         <MDXRemote source={post.content} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
       </div>
+
+      {/* Newsletter 订阅 */}
+      <SubscribeBox />
 
       {/* 文章脚 */}
       <footer className="mt-16">
