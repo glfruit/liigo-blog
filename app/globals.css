@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #fafafa;
+  --color-ink: #0a0a0a;
+  --color-ink-3: #757575;
+  --color-line: #e5e5e5;
+
+  --font-display: "Inter", "Helvetica Neue", "Songti SC", "Noto Serif SC", "STSong", serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* 目录式排印：极紧的行高营造档案目录感 */
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* 高 DPI 屏幕用 0.5px 发丝线 */
+.hairline-b {
+  border-bottom: 1px solid var(--color-line);
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .hairline-b {
+    border-bottom-width: 0.5px;
+  }
+}
+
+/* 自定义选区：灰字透明底，避免默认蓝色破坏单色体系 */
+::selection {
+  background: transparent;
+  color: var(--color-ink-3);
+  text-shadow: none;
+}
+
+/* 文章列表行：悬停时箭头淡入 */
+.post-row .row-arrow {
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.post-row:hover .row-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+.post-row:hover .row-title {
+  color: var(--color-ink-3);
+}
+.post-row .row-title {
+  transition: color 0.2s ease;
+}
+
+/* 页面淡入 */
+@keyframes page-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.page-enter {
+  animation: page-fade 0.3s ease;
+}
+
+/* 正文排版（MDX 渲染区域） */
+.prose-liigo {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--color-ink);
+}
+.prose-liigo h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 2.5em 0 0.8em;
+  padding-bottom: 0.4em;
+  border-bottom: 1px solid var(--color-line);
+}
+.prose-liigo h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 2em 0 0.6em;
+}
+.prose-liigo p {
+  margin: 1.1em 0;
+}
+.prose-liigo a {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--color-line);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s ease;
+}
+.prose-liigo a:hover {
+  text-decoration-color: var(--color-ink);
+}
+.prose-liigo code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--color-line);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+}
+.prose-liigo pre {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  padding: 1.2em 1.4em;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+.prose-liigo pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+.prose-liigo blockquote {
+  border-left: 2px solid var(--color-ink);
+  padding-left: 1.2em;
+  margin: 1.5em 0;
+  color: var(--color-ink-3);
+}
+.prose-liigo ul,
+.prose-liigo ol {
+  padding-left: 1.4em;
+  margin: 1.1em 0;
+}
+.prose-liigo li {
+  margin: 0.4em 0;
+}
+.prose-liigo table {
+  width: 100%;
+  font-size: 0.9rem;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+}
+.prose-liigo th,
+.prose-liigo td {
+  text-align: left;
+  padding: 0.6em 0.8em;
+  border-bottom: 1px solid var(--color-line);
+}
+.prose-liigo th {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-ink-3);
+  font-weight: 500;
+}
+.prose-liigo hr {
+  border: none;
+  border-top: 1px solid var(--color-line);
+  margin: 3em 0;
+}
+.prose-liigo img {
+  border-radius: 6px;
+  margin: 1.5em 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter,
+  .post-row .row-arrow,
+  .post-row .row-title {
+    animation: none;
+    transition: none;
+  }
+}

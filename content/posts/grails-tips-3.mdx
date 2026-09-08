@@ -1,0 +1,38 @@
+---
+title: "Grails点滴（三）"
+date: 2013-11-25
+category: archive
+tags: ["Grails", "技术研究"]
+description: "Grails 点滴（三）：Grails 开发中的零碎问题与技巧记录。"
+source: hexo-legacy
+draft: false
+---
+
+在进行Grails的开发时，我们经常需要查看GORM所产生的sql语句，需要在Datasource.groovy文件中加入下列配置：
+```groovy
+  dataSource {
+    ...
+    logSql = true
+    ...
+  }
+```
+为了让输出的sql语句清晰好读，还可以进行进一步配置，即在Datasource.groovy中加入：
+```groovy
+  hibernate {
+    ...
+    format_sql = true
+    use_sql_comments = true
+  }
+```
+但是有的时候我们不仅需要查看生成的sql语句，还需要查看在执行sql语句时实际传入的参数，这时需要在Config.groovy文件中加入下列配置信息：
+```groovy
+  log4j = {
+    debug "org.hibernate.SQL"
+    trace "org.hibernate.type.descriptor.sql.BasicBinder"
+  }
+```
+经过以上这些配置后就能很方便的查看生成的sql语句及其参数了。
+
+参考资料
+
+1. [《Grails in Action, 2nd Edition》](http://manning.com/gsmith2/)

@@ -1,0 +1,13 @@
+---
+title: "终于让JDEE在Emacs 24上跑起来了"
+date: 2012-01-20
+category: archive
+tags: ["Emacs", "数字生活"]
+description: "折腾记录：终于让 JDEE 在 Emacs 24 上跑起来了。"
+source: hexo-legacy
+draft: false
+---
+
+前几天将最新的jdee下载了下来，配置进Emacs后启动就报错，使用--debug-init启动后看到错误信息说是"Wrong number of arguments"，再看看出错的位置，是在jde-bug.el的buffer position 61164，于是用M-x goto-char 61164去到出错的地方，发现是说传给semantic-add-minor-mode这个函数的参数个数不对，看看它的定义，应该是是接受两个参数，但是在调用时却实际传递了三个参数。怎么改呢？看看函数说明，把传递的三个参数的第一个去掉，看起来只是一个quote而已，应该没什么问题，再把第三个参数放在第一的位置上，保存，重新启动，Emacs又在启动时报了jde-jdb.el和jde-plugins.el两个文件中的类似错误，依样修改之后就能正常启动了。不过在状态栏上显示有jdb*invalid*的字样，可能还有点什么问题，等碰到了再修改吧，至少现在能够跑起来了，呵呵。 
+
+更新：刚才google了一下 semantic-add-minor-mode这个函数，发现在Emacs 23中它确实是接受三个参数，第三个参数是可选的。还找到一个针对这个问题的 patch，解决方案和我是一样的，只是它将三个文件中相应的调用的第三个参数直接去掉了，唔，应该更正确一些吧，因为事实上第三个参数是可选的，要不要问题都不大。这样更改之后，果然上面提到的问题也消失了:-)

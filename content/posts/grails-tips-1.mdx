@@ -1,0 +1,37 @@
+---
+title: "Grails点滴（一）"
+date: 2013-11-25
+category: archive
+tags: ["Grails", "技术研究"]
+description: "记录了在运行Grails的测试代码时遇到的几个小问题及其解决方法"
+source: hexo-legacy
+draft: false
+---
+
+在运行
+```bash
+  grails test-app
+```
+时出现这样的错误信息：
+```bash
+  java.lang.IllegalArgumentException: Property source name must contain at least one character
+```
+经过搜索，发现是因为将application.properties里的app.name的配置去掉了导致的，将app.name="xxx"添加上就不会出现这种错误了；
+
+另外一个问题是为了方便调试在一些测试代码中插入了一些临时性的println语句，但是在运行测试时却发现println语句输出的信息看不到，搜索后在[StackOverflow](http://www.stackoverflow.com)上找到了答案，需要在运行测试代码的命令行
+上添加-echoOut参数：
+```bash
+  grails test-app -echoOut
+```
+
+最后一个问题是运行grails test-app时出现下列错误信息：
+```bash
+  Fatal error running tests: Method on class [xx.xx.xx.Role] was used outside of a Grails application. If running in the context of a test using the mocking API or bootstrap Grails correctly.
+```
+这个错误信息很奇怪，好在直接将这个错误信息google之后在[StackOverflow](http://www.stackoverflow.com)上找到了答案，原来是因为没有加入hibernate插件的缘故，这个可是从错误信息一点都看不出来的:-(
+
+参考资料
+
+1. [Converting Grails Applications to Plugins and vice versa](http://burtbeckwith.com/blog/?p=1973)
+2. [grails test-app to output to console](http://stackoverflow.com/questions/2217873/grails-test-app-to-output-to-console)
+3. [Error at application bootstrap after upgrade to grails 2.3.1](http://stackoverflow.com/questions/19599626/error-at-application-bootstrap-after-upgrade-to-grails-2-3-1)

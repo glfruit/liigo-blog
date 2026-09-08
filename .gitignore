@@ -1,0 +1,12 @@
+node_modules/
+.next/
+.open-next/
+out/
+dist/
+.wrangler/
+*.log
+.DS_Store
+.env*
+hexo-old/
+/index.html
+*.zip

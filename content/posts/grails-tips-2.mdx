@@ -1,0 +1,33 @@
+---
+title: "Grails点滴（二）"
+date: 2013-11-25
+category: archive
+tags: ["Grails", "技术研究"]
+description: "Grails 点滴（二）：Grails 开发中的零碎问题与技巧记录。"
+source: hexo-legacy
+draft: false
+---
+
+在继承一个第三方的实体类时出现这样一个问题，所继承的类已经定义了一个用作标识符的字段，类型为String，名字也叫做id：
+```groovy
+  class Parent {
+    ...
+    String id
+    ...
+  }
+
+  class Child extends Parent {
+  }
+```
+结果在对Child类进行持久化操作时就会出现Grails自动产生的id会覆盖掉父类定义的id字段，因此需要重新定义Child类的标识符：
+```groovy
+  class Child extends Parent {
+    static mapping = {
+      id generator: 'assigned', name: 'id'
+    }
+  }
+```
+
+参考资料
+
+1. [Grails / GORM: Changing default id name and type from an entity](http://blog.paulopoiati.com/2011/10/04/grails-gorm-changing-default-id-name-and-type-from-an-entity/)

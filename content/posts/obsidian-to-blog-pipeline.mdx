@@ -1,0 +1,53 @@
+---
+title: 教程：把 Obsidian 变成博客发布后台，写完即上线
+date: 2026-09-03
+category: ai-tutorials
+tags: [obsidian, 工作流, mdx]
+description: 一套零导出动作的写作发布管线：Obsidian Vault 直接作为博客内容目录，配合四个插件实现写完自动发布。
+---
+
+## 核心理念
+
+大多数"Obsidian 发布博客"教程都败在一个地方：**它们引入了"导出"这个动作**。多一个动作，就多一分中断写作流的理由。这套管线的原则是——
+
+> Obsidian Vault 就是博客的 content 目录。写作即编辑源码，发布即 git push。
+
+## 你需要四个插件
+
+| 插件 | 职责 |
+|---|---|
+| Templater | 新文章自动填入 frontmatter 模板（日期、默认草稿态） |
+| Obsidian Git | 定时自动 commit + push，写完即发布 |
+| Linter | 保存时校验必填字段，SEO 描述不为空 |
+| Image Converter | 粘贴图片自动转 WebP 并归置到 attachments/ |
+
+## Templater 模板
+
+```
+---
+title: 
+date: <% tp.date.now("YYYY-MM-DD") %>
+category: ai-tools
+tags: []
+description: 
+draft: true
+---
+```
+
+两个细节：`draft: true` 是安全阀，改为 false 才上线；`description` 由 Linter 强制校验非空，因为它是搜索引擎结果页上你唯一的广告位。
+
+## 构建端如何兼容 Obsidian 语法
+
+博客构建时的 remark 管线处理三类差异：
+
+- `[[双链]]` → 按 slug 映射转成标准链接，找不到目标就降级为纯文本
+- `![[附件]]` → 同步脚本把附件搬到静态目录并改写路径
+- `> [!note]` Callout → 渲染成带样式的提示块
+
+**写作端保持 Obsidian 原生习惯，转换全部发生在构建期。** 这是这条管线能长期运转的关键——它不要求你改变任何写作方式。
+
+## 防坑清单
+
+- 文件名用英文短横线命名，它就是 URL slug
+- 手机和电脑都装 Obsidian Git，通勤攒草稿、回家发正式版
+- 每周检查一次构建日志，Linter 拦不住的错会在这里暴露

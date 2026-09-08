@@ -1,0 +1,34 @@
+---
+title: "Swift初印象"
+date: 2014-06-04
+category: archive
+tags: ["技术研究"]
+description: "WWDC 2014 后第一时间上手 Swift 语言的初步印象与点评。"
+source: hexo-legacy
+draft: false
+---
+
+一年一度的WWDC开始了，除了虽然没有亮瞎我的双眼但也很吸引我的OS X Yosemite（iCloud Drive是我期待很久的功能了）以及iOS 8之外，最让人感兴趣的当然就是苹果新推出的Swift语言了。由于还没有看WWDC 2014的Keynote，于是我先在网上搜索了一下关于Swift的一些评价，结果和任何一种新事物一样，网上对它的评价褒贬不一，有人认为它是很棒的Objective-C的替代者，也有人认为它是一个脆弱的玩具语言，压根儿就不是用来干正事的。看来从这些口水仗里看不出什么东西来了，还是自己动手，亲自实践一下吧。
+
+## 初步印象
+我到iBooks上下载了《Swift The Programming Language》，花了一点时间迅速把第一部分“Welcome to Swift”浏览了一遍，简单来说有两个总的感觉，一个是并没有什么让我特别兴奋的点，但是其实很多特性还是不错的，不过其它语言里已经有了，Swift应该算是从它们那里借鉴过来的；这个感觉直接导致了我另外一个感觉，这货真是个杂交品种：
+- C#的痕迹：getter，setter的定义
+Lisp的痕迹：在方法中通过参数的位置来直接访问参数以及Conditional If
+Hashkell的痕迹：函数的定义方式
+Groovy的痕迹：Dictionary的创建
+
+看看苹果对它的定位：
+Swift has been years in the making.(憋大招憋了很久了）Apple laid the foundation for Swift by advancing our existing compiler, debugger, and framework infrastructure. （这得是下了多大的一盘棋啊）
+“It is the first industrial-quality systems programming language that is as expressive and enjoyable as a scripting language.”（自信满满）
+It’s designed to scale from “hello world” to an entire operating system.（明确告诉你，用来开发操作系统都不成问题，别以为哥真的是玩具语言）
+The compiler is optimized for performance, and the language is optimized for development, without compromising on either.（哥已经很实用了，不光是用着爽，跑起来性能也不差）
+
+关键是它能够统一地将它们融合起来，其实这也是苹果这几年一直在干的事：整合。很多人吐槽说苹果的创新越来越少，但是事实上一直都有，只是并不是每次都显得那么引人注目而已。
+
+## 比较有意思的东西
+1. OptionalValue
+2. Willset Didset
+3. Playgrounds
+
+有人抨击它的一点就是没有异常处理，我看了看，貌似确实没看到，不过，需要吗？
+以上就是对Swift的惊鸿一瞥，看来还是有把玩的价值的，后续再慢慢写吧
