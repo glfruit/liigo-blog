@@ -20,5 +20,6 @@
   "enabled_templates_hotkeys": [],
   "startup_templates": [],
   "intellisense_render": "1",
-  "ignore_folders_on_creation": []
+  "ignore_folders_on_creation": [],
+  "trigger_on_file_creation": true
 }
