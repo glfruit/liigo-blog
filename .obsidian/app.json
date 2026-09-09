@@ -1,0 +1,18 @@
+{
+  "attachmentFolderPath": "attachments",
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "folder",
+  "newFileFolderPath": "content/posts",
+  "userIgnoreFilters": [
+    "node_modules/",
+    ".next/",
+    ".open-next/",
+    "out/",
+    "dist/",
+    ".wrangler/",
+    "hexo-old/",
+    "app/",
+    "lib/",
+    "public/"
+  ]
+}

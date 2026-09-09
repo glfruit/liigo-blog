@@ -10,3 +10,10 @@ dist/
 hexo-old/
 /index.html
 *.zip
+
+# Obsidian：插件代码与本地状态不入库，只保留配置
+.obsidian/plugins/*/main.js
+.obsidian/plugins/*/styles.css
+.obsidian/plugins/*/manifest.json
+.obsidian/workspace.json
+.obsidian/appearance.json

@@ -1,0 +1,11 @@
+{
+  "commitMessage": "vault: {{date}}",
+  "autoSaveInterval": 10,
+  "autoPushInterval": 10,
+  "autoPullInterval": 10,
+  "autoPullOnBoot": true,
+  "disablePush": false,
+  "syncMethod": "merge",
+  "updateSubmodulesOnBoot": false,
+  "showStatusBar": true
+}
