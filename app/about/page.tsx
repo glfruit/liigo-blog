@@ -16,6 +16,9 @@ export default function AboutPage() {
       </h1>
 
       <div className="prose-liigo mt-10">
+        <p className="border-l-2 border-ink pl-4 text-lg leading-loose">
+          充满好奇心，却越来越困惑，心里住着的还是那个年轻人。
+        </p>
         <p>
           我的本职工作是一名高职教师。白天上课，
           处理教学管理和行政方面的事务；这些事情不多的日子，
