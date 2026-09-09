@@ -29,32 +29,14 @@ export default function AboutPage() {
           liigo 这个名字藏着我的真名，也藏着一句提醒：
           <strong>少说，多做，做完记下来。</strong>
         </p>
-        <p>这个博客有几个固定栏目：</p>
-        <ul>
-          <li>
-            <strong>AI 工具</strong>：评测与使用技巧
-          </li>
-          <li>
-            <strong>AI 教程</strong>：经过亲手验证的深度教程
-          </li>
-          <li>
-            <strong>思考</strong>：关于 AI、以及更广义的数字技术应用的
-            人文与哲学层面的想法
-          </li>
-          <li>
-            <strong>个人知识管理</strong>：我感兴趣也投入了很多时间的领域——
-            如何积累、组织和复用知识
-          </li>
-          <li>
-            <strong>建站笔记</strong>：这个博客本身的技术实现过程——
-            它用 Next.js 构建，部署在 Cloudflare 边缘网络上，
-            所有文章在 Obsidian 里写成
-          </li>
-        </ul>
-        <p>
-          这里没有热点搬运，没有 AI 生成的速食内容。
-          每篇文章都从我自己的工作流里长出来，写之前都亲手跑通过。
-        </p>
+        <figure className="mt-8">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/about-curiosity.webp"
+            alt="一个孩子模样的人站在空旷的原野上，仰望布满问号的天空"
+            className="w-full"
+          />
+        </figure>
         <h2>联系</h2>
         <p>
           最快的方式是邮件：<a href="mailto:hi@liigo.dev">hi@liigo.dev</a>。
