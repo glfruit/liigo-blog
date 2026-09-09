@@ -14,5 +14,6 @@
     "app/",
     "lib/",
     "public/"
-  ]
+  ],
+  "showUnsupportedFiles": true
 }
