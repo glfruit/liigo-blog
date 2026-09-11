@@ -18,8 +18,8 @@ export default function AboutPage() {
         </p>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/about-tianwen2.png"
-          alt="天问：一个人站在山崖上，仰望银河与满天星斗，向苍穹发问"
+          src="/images/about-inner-youth.png"
+          alt="一个盘腿静坐的中年人，头顶的思想云里住着年轻时的自己，正好奇地触碰一枚问号"
           className="mt-10 w-full"
         />
       </div>
