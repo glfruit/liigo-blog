@@ -12,17 +12,15 @@ export default function AboutPage() {
         ( 关于 / About )
       </p>
 
-      <div className="mt-16 flex flex-col items-center text-center">
-        <p className="font-display max-w-md text-xl leading-loose font-semibold tracking-tight sm:text-2xl">
-          充满好奇心，却越来越困惑，
-          <br />
-          心里住着的还是那个年轻人。
+      <div className="mt-16">
+        <p className="font-display text-center text-xl font-semibold tracking-tight whitespace-nowrap sm:text-2xl">
+          充满好奇心，却越来越困惑，心里住着的还是那个年轻人。
         </p>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/about-curiosity.png"
-          alt="一个孩子仰望头顶漂浮的问号、星星、纸飞机、小鸟、书本和灯泡"
-          className="mt-12 w-full max-w-sm"
+          src="/images/about-tianwen.webp"
+          alt="天问：一个人站在山崖上，仰望银河与满天星斗，向苍穹发问"
+          className="hairline mt-10 w-full"
         />
       </div>
     </div>
