@@ -18,8 +18,8 @@ export default function AboutPage() {
         </p>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/about-inner-youth.png"
-          alt="一个盘腿静坐的中年人，头顶的思想云里住着年轻时的自己，正好奇地触碰一枚问号"
+          src="/images/about-youth-tianwen.png"
+          alt="盘腿坐着的中年人一脸困惑地挠头，思想云里的年轻自己正伸手触碰星空与问号"
           className="mt-10 w-full"
         />
       </div>
