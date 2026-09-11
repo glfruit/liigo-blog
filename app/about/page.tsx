@@ -18,9 +18,9 @@ export default function AboutPage() {
         </p>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/about-tianwen.webp"
+          src="/images/about-tianwen2.png"
           alt="天问：一个人站在山崖上，仰望银河与满天星斗，向苍穹发问"
-          className="hairline mt-10 w-full"
+          className="mt-10 w-full"
         />
       </div>
     </div>
