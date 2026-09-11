@@ -1,0 +1,32 @@
+---
+title: "选址与选型：我为什么用 Next.js + Cloudflare Workers 重建博客"
+date: 2026-09-11
+category: building
+tags: ["建站笔记", "Next.js", "Cloudflare", "博客"]
+description: "从 Hexo 到 Next.js 的重建决策：域名 liigo.dev 的品牌故事、单色墨纸设计体系，以及内容管线优先的架构思考。"
+draft: true
+---
+
+## 开篇：为什么要重建
+
+（写作要点：Hexo 博客十年停更的现状；为什么不是继续用 Hexo / Hugo；想清楚博客是"内容系统的展示层"而不是玩具项目）
+
+## 域名：liigo.dev 的品牌故事
+
+（写作要点：liigo = 真名"李果"的拼音缩写变体，Li + Go，双 i 增强辨识度；Go 双关"行动力"与 Go 语言；为什么选 .dev；Cloudflare Registrar 成本价续费的考虑）
+
+## 技术栈的选择逻辑
+
+（写作要点：Next.js 15 App Router 全量 SSG 的原因；OpenNext + Workers 而非 Vercel 的成本与控制权考量；MDX 本地文件 + Git 而非 CMS；素材：《个人博客技术方案与架构文档》§2）
+
+## 设计体系：单色墨纸
+
+（写作要点：ink #0a0a0a / paper #fafafa / line #e5e5e5；目录式排印、发丝线、无彩色的审美主张；徽章式双 i logo 的设计；参考 DESIGN.md）
+
+## 内容管线优先
+
+（写作要点：content/ 即 Obsidian Vault 的核心设计——写作即编辑源码，发布即 git push；两条管线：人工写作 + 自动化转换；分类收敛到 3 个的红线）
+
+## 小结
+
+（写作要点：基础设施隐形，内容管线优先；维护过程本身就是内容资产——本系列其余四篇的导引）

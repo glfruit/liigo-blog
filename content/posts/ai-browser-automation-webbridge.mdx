@@ -1,0 +1,31 @@
+---
+title: "让 AI 操作我的浏览器：半小时搞定 Cloudflare、GSC、Bing 全配置"
+date: 2026-09-11
+category: building
+tags: ["建站笔记", "AI", "自动化", "WebBridge", "SEO"]
+description: "用 Kimi WebBridge 让 AI 直接操作我的 Chrome 完成建站配置：CDP 真实输入的突破、OAuth 超时、以及 passkey 教会我的 agent 边界。"
+draft: true
+---
+
+## 起因：一堆"点鼠标"的配置活
+
+（写作要点：Cloudflare API Token 创建、GSC 验证、sitemap 提交、Bing 导入——都是网页表单操作，适合让 AI 代劳；WebBridge 的原理：本地守护进程 + Chrome 扩展，用我真实的登录会话）
+
+## 实战中的三个坎
+
+### 合成点击被无视
+（写作要点：Cloudflare 的 react-select 下拉框对 el.click() 毫无反应；突破——CDP `Input.dispatchMouseEvent` 发送真实鼠标事件；先取 getBoundingClientRect 坐标再点击的模式）
+
+### GSC 验证：HTML 文件被自家博客吃了
+（写作要点：Google 的验证文件 googleXXX.html 被 OpenNext 的 307 重定向去掉 .html 后缀导致 404——自己埋的坑自己踩；改用 HTML 标记（meta 标签）方案，写进 Next.js metadata 的 verification 字段）
+
+### OAuth 超时与 passkey
+（写作要点：Bing 登录的 Google OAuth 因为我离开太久而 state 过期，oauth_failure；重走一遍即过；passkey 验证必须我本人按指纹——agent 的天花板）
+
+## 思考：agent 的边界与人机接力
+
+（写作要点：哪些步骤 AI 做得又快又好（填表、翻页、提交），哪些必须人做（生物识别、最终确认）；"我口述、它操作、关键处我按指纹"的协作节奏；这种能力对日常琐事的迁移价值）
+
+## 小结
+
+（写作要点：配置类杂活是最容易被低估的时间黑洞；让 agent 进浏览器是把"自动化"延伸到没有 API 的角落）

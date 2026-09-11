@@ -1,0 +1,28 @@
+---
+title: "把 Next.js 塞进 Cloudflare Workers：OpenNext 的两个真坑"
+date: 2026-09-11
+category: building
+tags: ["建站笔记", "OpenNext", "Cloudflare", "Next.js", "部署"]
+description: "OpenNext 部署 Next.js 到 Cloudflare Workers 的实战记录：pages-manifest 丢失、线上全空的 ISR 缓存陷阱，以及两步构建法。"
+draft: true
+---
+
+## 背景：部署方案的选择
+
+（写作要点：`npm run deploy` = opennextjs-cloudflare build + deploy；wrangler.jsonc 配置；免费额度）
+
+## 坑一：pages-manifest.json 凭空消失
+
+（写作要点：现象——opennext 内部触发的 next build 找不到 `.next/standalone/.next/server/pages-manifest.json`，手动 `npx next build` 却正常；解法——两步构建：`next build && opennextjs-cloudflare build --skipNextBuild`，固化进 package.json 与 CI）
+
+## 坑二：部署成功，但首页、RSS、sitemap 全是空的
+
+（写作要点：这是最惊悚的一幕——文章详情页正常，列表页全空；原因——SSG 页面进了 ISR 增量缓存，而 Workers 上默认没有缓存后端，运行时回源渲染读不到文件系统里的 MDX；解法——`static-assets-incremental-cache`，全静态站点的正确姿势，零额外成本，不需要 R2/KV）
+
+## 顺带解决：域名绑定与 CI
+
+（写作要点：wrangler routes 配置 custom_domain 一步搞定 liigo.dev + www，免 Dashboard 手动操作；GitHub Actions push main 自动发布；GSC HTML 文件验证被 307 吃掉的小插曲——留给第③篇展开）
+
+## 小结
+
+（写作要点：全 SSG 是文章站避开 OpenNext 运行时坑的关键策略；坑本身即内容）
