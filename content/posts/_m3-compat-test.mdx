@@ -1,0 +1,29 @@
+---
+title: "M3 兼容层临时测试页"
+date: 2026-09-14
+category: building
+tags: ["test"]
+description: "临时测试文件：验证 wikiLink / wikiImage / callout 编译，构建后删除。"
+draft: false
+---
+
+这是一条双链：[[claude-code-first-hour]] 应该链接到已发布文章。
+
+带别名的双链：[[Claude Code 上手第一小时：从安装到跑通第一个自动化任务|上手一小时笔记]]。
+
+未发布笔记的双链：[[某个还没写的想法]] 应该渲染为失效链接。
+
+附件图片：![[diagram.webp]]
+
+带尺寸附件：![[screenshot.webp|300]]
+
+> [!note] 这是提示标题
+> 这是 callout 的正文内容，**包含加粗**。
+> 第二段也应该在 callout 里。
+
+> [!warning]
+> 没有标题的 warning callout。
+
+> 这是一个普通的 blockquote，不应该被转换。
+
+行内 `code` 和一个 [普通链接](https://example.com)。

@@ -196,3 +196,13 @@ body {
     transition: none;
   }
 }
+
+/* Obsidian 双链：未发布笔记的失效链接（虚线下划线灰字，纯文本不跳转） */
+.wiki-broken {
+  color: #a3a3a3;
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-decoration-color: #a3a3a3;
+  text-underline-offset: 3px;
+  cursor: default;
+}

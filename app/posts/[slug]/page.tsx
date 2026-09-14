@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { getAllPosts, getPostBySlug, getRelatedPosts, CATEGORIES } from "@/lib/posts";
+import { callout, wikiImage, wikiLink } from "@/lib/remark-obsidian.mjs";
+import Callout from "@/components/callout";
 import SubscribeBox from "@/app/components/SubscribeBox";
 
 export function generateStaticParams() {
@@ -48,6 +50,9 @@ export default async function PostPage({
   if (!post) notFound();
   const related = getRelatedPosts(slug);
 
+  // Obsidian 双链映射：slug + title → 文章（vault 里 [[Page Name]] 靠它解析）
+  const wikiPages = getAllPosts().map((p) => ({ slug: p.slug, title: p.title }));
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -88,7 +93,15 @@ export default async function PostPage({
 
       {/* 正文 */}
       <div className="prose-liigo">
-        <MDXRemote source={post.content} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
+        <MDXRemote
+          source={post.content}
+          components={{ Callout }}
+          options={{
+            mdxOptions: {
+              remarkPlugins: [remarkGfm, callout, wikiImage, wikiLink(wikiPages)],
+            },
+          }}
+        />
       </div>
 
       {/* 相关文章 */}
